@@ -1,0 +1,13 @@
+/* Backgroun color */
+.grea-bg{
+    background: #F8F8F8;
+}
+/* Button Color  */
+.btn-manager{
+    background: #59A5FF;
+    color: white;
+}
+.btn-manager:hover{
+    background-color: #2e7ee0;
+    color: white;
+}
