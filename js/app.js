@@ -12,42 +12,48 @@ function getInnerText(textId) {
     return textToNumbar
 }
 
+    // Expenses Input  And Sum
+function expensesTotal(food, rent, clothes) {
+    const foodInput = getInputValue(food);
+    const rentInput = getInputValue(rent);
+    const clothesInput = getInputValue(clothes);
+
+    const total = foodInput + rentInput + clothesInput;
+    document.getElementById('total-expenses').innerText = total;
+    return total
+}
+
+// Minus Function 
+function getMimus(num1, num2) {
+    const minusValue = num1 - num2;
+    return minusValue
+}
+
+// Saveing Function\
+function getSave(incomeId, saveId) {
+    const incomeInput = getInputValue(incomeId);
+    const saveInput = getInputValue(saveId);
+    const save = incomeInput / saveInput;
+    document.getElementById('saving-amount').innerText = save
+    return save
+}
+
 // Money Calculation 
 document.getElementById('calculate-btn').addEventListener('click', function () {
-    // Income Input
-    const income = getInputValue('income-input');
-
-    // Expenses Input 
-    const food = getInputValue('food-input');
-    const rent = getInputValue('rent-input');
-    const clothes = getInputValue('clothes-input');
-
     // Total Expenses
-    const sumExpenses = food + rent + clothes;
-    
-    document.getElementById('total-expenses').innerText = sumExpenses;
+    const sumExpenses = expensesTotal('food-input', 'rent-input', 'clothes-input');
 
     // Balance Total 
-    const balanceTotal = income - sumExpenses;
-
+    const balanceTotal = getMimus(getInputValue('income-input'), sumExpenses) ;
    document.getElementById('balance').innerText = balanceTotal
 });
 
 // Saving And Remaining Amount 
 document.getElementById('save-btn').addEventListener('click', function () {
-    // Income Input
-    const income = getInputValue('income-input');
-    // Save Input
-    const saveInput = getInputValue('save-input');
-    // balance Total 
-    const balance = getInnerText('balance');
-
-    const saveing = income / saveInput;
-
-    document.getElementById('saving-amount').innerText = saveing
-
+    // Saving Amount
+    const saving = getSave('income-input', 'save-input');
+    
     // Remaining Balance
-    const remainingBalance = balance - saveing;
-
+    const remainingBalance = getMimus(getInnerText('balance'), saving);
     document.getElementById('remaining-balance').innerText = remainingBalance
 })
