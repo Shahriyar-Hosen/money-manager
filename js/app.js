@@ -18,9 +18,14 @@ function expensesTotal(food, rent, clothes) {
     const rentInput = getInputValue(rent);
     const clothesInput = getInputValue(clothes);
 
-    const total = foodInput + rentInput + clothesInput;
-    document.getElementById('total-expenses').innerText = total;
-    return total
+    if ((foodInput > 0) && (rentInput > 0) && (clothesInput > 0)) {
+        const total = foodInput + rentInput + clothesInput;
+        document.getElementById('total-expenses').innerText = total
+        return total
+    }
+    else {
+        alert("Please enter the number of 'Expenses inputs' which is greater than zero And 'Expenses' less than 'Income'")
+    }
 }
 
 // Minus Function 
@@ -33,19 +38,27 @@ function getMimus(num1, num2) {
 function getSave(incomeId, saveId) {
     const incomeInput = getInputValue(incomeId);
     const saveInput = getInputValue(saveId);
-    const save = incomeInput / saveInput;
-    document.getElementById('saving-amount').innerText = save
-    return save
+    if (incomeInput > 0 && saveInput > 0) {
+        const save = (incomeInput / 100) * saveInput;
+        document.getElementById('saving-amount').innerText = save
+        return save
+    }
 }
 
 // Money Calculation 
 document.getElementById('calculate-btn').addEventListener('click', function () {
     // Total Expenses
     const sumExpenses = expensesTotal('food-input', 'rent-input', 'clothes-input');
-
+    const incomeInput = getInputValue('income-input');
+    
     // Balance Total 
-    const balanceTotal = getMimus(getInputValue('income-input'), sumExpenses) ;
-   document.getElementById('balance').innerText = balanceTotal
+    if (incomeInput > 0 && incomeInput > sumExpenses) {
+        const balanceTotal = getMimus(incomeInput, sumExpenses) ;
+      document.getElementById('balance').innerText = balanceTotal
+    }
+    else {
+        alert("Please enter the number of  'Income input' which is greater than zero And 'Expenses' less than 'Income'")
+    }
 });
 
 // Saving And Remaining Amount 
@@ -53,7 +66,18 @@ document.getElementById('save-btn').addEventListener('click', function () {
     // Saving Amount
     const saving = getSave('income-input', 'save-input');
     
+    // Balance Amount
+    const balance = getInnerText('balance');
+
     // Remaining Balance
-    const remainingBalance = getMimus(getInnerText('balance'), saving);
-    document.getElementById('remaining-balance').innerText = remainingBalance
+    if (saving < balance) {
+    if (saving > 0 && balance > 0){
+        const remainingBalance = getMimus(balance, saving);
+    
+        document.getElementById('remaining-balance').innerText = remainingBalance
+        }
+    }
+    else {
+        alert("Please enter the number of 'save Percentage input' which is greater than zero And 'Saving Amount' will be smaller than 'Balance'")
+    }
 })
