@@ -78,6 +78,6 @@ document.getElementById('save-btn').addEventListener('click', function () {
         }
     }
     else {
-        alert("Please enter the number of 'save Percentage input' which is greater than zero And 'Saving Amount' will be smaller than 'Balance'")
+        alert("There is not enough money for shaving. Please enter the number of 'save Percentage input' which is greater than zero And 'Saving Amount' will be smaller than 'Balance'")
     }
 })
