@@ -1,4 +1,4 @@
-   // Input  To Value Function
+// Input  To Value Function
 function getInputValue(inputId) {
     const input = document.getElementById(inputId);
     const inputValue = parseFloat(input.value);
@@ -12,17 +12,14 @@ function getInnerText(textId) {
     return textToNumbar
 }
 
+// Money Calculation 
 document.getElementById('calculate-btn').addEventListener('click', function () {
     // Income Input
     const income = getInputValue('income-input');
 
-    // Food Input 
+    // Expenses Input 
     const food = getInputValue('food-input');
-    
-    // Rent Input 
     const rent = getInputValue('rent-input');
-
-    // Clothes Input 
     const clothes = getInputValue('clothes-input');
 
     // Total Expenses
@@ -42,7 +39,6 @@ document.getElementById('save-btn').addEventListener('click', function () {
     const income = getInputValue('income-input');
     // Save Input
     const saveInput = getInputValue('save-input');
-
     // balance Total 
     const balance = getInnerText('balance');
 
