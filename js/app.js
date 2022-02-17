@@ -1,39 +1,57 @@
    // Input  To Value Function
 function getInputValue(inputId) {
-    let input = document.getElementById(inputId);
+    const input = document.getElementById(inputId);
     const inputValue = parseFloat(input.value);
-    input.value = ""
     return inputValue
 }
+
 //  Inner Text to Numbar Function 
 function getInnerText(textId) {
-    const balanceText = document.getElementById(textId);
-    const textToNumbar = parseFloat(balanceText.innerText);
+    const textFild = document.getElementById(textId);
+    const textToNumbar = parseFloat(textFild.innerText);
     return textToNumbar
 }
 
 document.getElementById('calculate-btn').addEventListener('click', function () {
     // Income Input
-    const incomeInput = getInputValue('income-input');
+    const income = getInputValue('income-input');
 
     // Food Input 
-    const foodInput = getInputValue('food-input');
+    const food = getInputValue('food-input');
     
     // Rent Input 
-    const rentInput = getInputValue('rent-input');
+    const rent = getInputValue('rent-input');
 
     // Clothes Input 
-    const clothesInput = getInputValue('clothes-input');
+    const clothes = getInputValue('clothes-input');
 
     // Total Expenses
-    const sumExpenses = foodInput + rentInput + clothesInput;
-    const totalExpenses = document.getElementById('total-expenses').innerText = sumExpenses;
+    const sumExpenses = food + rent + clothes;
+    
+    document.getElementById('total-expenses').innerText = sumExpenses;
 
     // Balance Total 
-    const balanceTotal = incomeInput - totalExpenses;
-    const balance = document.getElementById('balance').innerText = balanceTotal;
-    
+    const balanceTotal = income - sumExpenses;
 
-    // let totalExpensesNum = getInnerText('total-expenses');
-
+   document.getElementById('balance').innerText = balanceTotal
 });
+
+// Saving And Remaining Amount 
+document.getElementById('save-btn').addEventListener('click', function () {
+    // Income Input
+    const income = getInputValue('income-input');
+    // Save Input
+    const saveInput = getInputValue('save-input');
+
+    // balance Total 
+    const balance = getInnerText('balance');
+
+    const saveing = income / saveInput;
+
+    document.getElementById('saving-amount').innerText = saveing
+
+    // Remaining Balance
+    const remainingBalance = balance - saveing;
+
+    document.getElementById('remaining-balance').innerText = remainingBalance
+})
