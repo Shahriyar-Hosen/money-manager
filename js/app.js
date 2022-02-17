@@ -12,7 +12,7 @@ function getInnerText(textId) {
     return textToNumbar
 }
 
-    // Expenses Input  And Sum
+// Expenses Input  And Sum
 function expensesTotal(food, rent, clothes) {
     const foodInput = getInputValue(food);
     const rentInput = getInputValue(rent);
@@ -34,10 +34,11 @@ function getMimus(num1, num2) {
     return minusValue
 }
 
-// Saveing Function\
+// Saveing Function
 function getSave(incomeId, saveId) {
     const incomeInput = getInputValue(incomeId);
     const saveInput = getInputValue(saveId);
+
     if (incomeInput > 0 && saveInput > 0) {
         const save = (incomeInput / 100) * saveInput;
         document.getElementById('saving-amount').innerText = save
@@ -65,7 +66,6 @@ document.getElementById('calculate-btn').addEventListener('click', function () {
 document.getElementById('save-btn').addEventListener('click', function () {
     // Saving Amount
     const saving = getSave('income-input', 'save-input');
-    
     // Balance Amount
     const balance = getInnerText('balance');
 
